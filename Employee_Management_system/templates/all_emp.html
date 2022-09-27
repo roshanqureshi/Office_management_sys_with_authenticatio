@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>Employee Details</title>
+{% endblock %}
+{% block content %}
+
+<h1>All Employee Details</h1>
+<hr>
+{% csrf_token %}
+<table class="table table-dark table-striped-columns">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Department</th>
+        <th>Location</th>
+        <th>Salary</th>
+        <th>Bonus</th>
+        <th>Role</th>
+        <th>Phone</th>
+        <th>Hire Date</th>
+    </tr>
+    {% for i in obj %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.dep.name}}</td>
+        <td>{{i.dep.location}}</td>
+        <td>{{i.salary}}</td>
+        <td>{{i.bonus}}</td>
+        <td>{{i.role.name}}</td>
+        <td>{{i.phone}}</td>
+        <td>{{i.hire_date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a class="btn btn-primary" href="{% url 'home' %}" role="button">Back</a>
+{% endblock %}
